@@ -1,0 +1,16 @@
+﻿@model Blog
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+    </div>
+    <div>
+        <label>Image</label>
+        <input type="file" name="imageFile" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

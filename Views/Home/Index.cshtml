@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Blog>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Blog Posts</h2>
+        <div class="row">
+            @foreach (var blog in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card">
+                        <img class="card-img-top blog-image" src="@blog.ImageUrl" alt="Blog Image" />
+                        <div class="card-body">
+                            <h5 class="card-title blog-title">@blog.Title</h5>
+                            <p class="card-text blog-content">@blog.Content</p>
+                            <p class="blog-info">By <span class="blog-author">@blog.User.FullName</span> on <span class="blog-date">@blog.CreatedAt.ToString("g")</span></p>
+                            <div class="blog-actions">
+                                <a class="btn btn-warning btn-edit" asp-action="Edit" asp-route-id="@blog.Id">Edit</a>
+                                <a class="btn btn-danger btn-delete" asp-action="Delete" asp-route-id="@blog.Id">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="text-center mt-4">
+            <a class="btn btn-primary" asp-controller="Blog" asp-action="Create">Create New Blog Post</a>
+        </div>
+    </div>
+</body>
+</html>
